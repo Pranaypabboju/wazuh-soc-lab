@@ -33,7 +33,7 @@ Tools like Nmap send packets to a range of ports and analyze the responses to bu
 ### Scan 1 — Basic TCP Scan (quick)
 ```bash
 # From Kali Linux — scan common ports
-nmap [ENDPOINT_IP]
+nmap [192.168.56.30]
 
 # Example output:
 # PORT   STATE SERVICE
@@ -44,7 +44,7 @@ nmap [ENDPOINT_IP]
 ### Scan 2 — Aggressive Scan (generates more alerts)
 ```bash
 # OS detection + version detection + script scanning
-nmap -A -sV [ENDPOINT_IP]
+nmap -A -sV [192.168.56.30]
 
 # Explanation of flags:
 # -A   → aggressive mode (OS + version + traceroute)
@@ -54,7 +54,7 @@ nmap -A -sV [ENDPOINT_IP]
 ### Scan 3 — Full Port Scan (very noisy)
 ```bash
 # Scan ALL 65535 ports — this is very loud and will trigger more alerts
-nmap -p- [ENDPOINT_IP]
+nmap -p- [192.168.56.30]
 ```
 
 ---
@@ -81,9 +81,9 @@ sudo ufw logging on
 
 Then re-run the Nmap scan. You'll see kernel log entries like:
 ```
-kernel: [UFW BLOCK] IN=eth0 SRC=192.168.56.20 DPT=80
-kernel: [UFW BLOCK] IN=eth0 SRC=192.168.56.20 DPT=443
-kernel: [UFW BLOCK] IN=eth0 SRC=192.168.56.20 DPT=8080
+kernel: [UFW BLOCK] IN=eth0 SRC=192.168.42.128 DPT=80
+kernel: [UFW BLOCK] IN=eth0 SRC=192.168.42.128 DPT=443
+kernel: [UFW BLOCK] IN=eth0 SRC=192.168.42.128 DPT=8080
 ```
 
 ---
